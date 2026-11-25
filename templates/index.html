@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetalPulse - Flower Prediction</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9, #fce4ec);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+        }
+
+        .container {
+            background: white;
+            width: 100%;
+            max-width: 480px;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        h1 {
+            color: #2e7d32;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 28px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            color: #444;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        input:focus {
+            outline: 2px solid #81c784;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            background: #43a047;
+            color: white;
+            border: none;
+            border-radius: 9px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2e7d32;
+        }
+
+        .footer {
+            text-align: center;
+            color: #888;
+            font-size: 12px;
+            margin-top: 22px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🌸 PetalPulse</h1>
+
+        <p class="subtitle">
+            Discover your flower species using Machine Learning
+        </p>
+
+        <form action="/predict" method="POST">
+
+            <label>Sepal Length (cm)</label>
+            <input type="number" step="any" name="sepal_length" required>
+
+            <label>Sepal Width (cm)</label>
+            <input type="number" step="any" name="sepal_width" required>
+
+            <label>Petal Length (cm)</label>
+            <input type="number" step="any" name="petal_length" required>
+
+            <label>Petal Width (cm)</label>
+            <input type="number" step="any" name="petal_width" required>
+
+            <button type="submit">🌼 Predict Flower</button>
+
+        </form>
+
+        <p class="footer">
+            Powered by Machine Learning | PetalPulse
+        </p>
+
+    </div>
+
+</body>
+</html>

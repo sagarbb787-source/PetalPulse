@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetalPulse | AI Flower Classifier</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #e8f5e9, #fce4ec);
+            min-height: 100vh;
+            color: #263238;
+        }
+
+        header {
+            background: #245c45;
+            color: white;
+            padding: 22px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 32px;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            margin-top: 8px;
+            color: #d7f5df;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 55px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .flower-icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            color: #245c45;
+            margin-bottom: 12px;
+        }
+
+        .description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        .upload-box {
+            border: 2px dashed #79a98a;
+            padding: 30px;
+            border-radius: 15px;
+            background: #f7fcf8;
+            margin-bottom: 20px;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        button {
+            background: #28734d;
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #174b32;
+            transform: translateY(-2px);
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 22px;
+            background: #edf8ef;
+            border-radius: 12px;
+            border-left: 5px solid #28734d;
+        }
+
+        .result h3 {
+            color: #245c45;
+            margin-bottom: 12px;
+        }
+
+        .error {
+            color: #b42318;
+            margin-top: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #64756a;
+        }
+
+        @media(max-width: 600px) {
+            .container {
+                margin: 25px auto;
+            }
+
+            .card {
+                padding: 25px 18px;
+            }
+
+            header h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌸 PetalPulse</h1>
+    <p>Discover the beauty of flowers with Artificial Intelligence</p>
+</header>
+
+<div class="container">
+    <div class="card">
+
+        <div class="flower-icon">🌺</div>
+
+        <h2>AI Flower Classification</h2>
+
+        <p class="description">
+            Upload an image of a flower and let our Machine Learning
+            model identify its species within seconds.
+        </p>
+
+        <form action="/predict" method="POST"
+              enctype="multipart/form-data">
+
+            <div class="upload-box">
+                <h3>Upload Your Flower Image</h3>
+                <p>Select a JPG, JPEG or PNG image</p>
+
+                <input
+                    type="file"
+                    name="file"
+                    accept="image/png,image/jpeg,image/jpg"
+                    required
+                >
+            </div>
+
+            <button type="submit">
+                🌼 Predict Flower
+            </button>
+
+        </form>
+
+        {% if error %}
+        <div class="error">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        {% if prediction %}
+        <div class="result">
+            <h3>🌸 Prediction Result</h3>
+
+            <p>
+                <strong>Flower Species:</strong>
+                {{ prediction }}
+            </p>
+
+            {% if confidence is defined %}
+            <p>
+                <strong>Confidence:</strong>
+                {{ confidence }}%
+            </p>
+            {% endif %}
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 PetalPulse | Powered by Machine Learning & MLOps</p>
+</footer>
+
+</body>
+</html>

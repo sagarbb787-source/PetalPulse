@@ -1,0 +1,6 @@
+venv/
+__pycache__/
+*.pyc
+flower_photos/
+flower_photos.tgz
+
